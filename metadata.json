@@ -1,0 +1,6 @@
+{
+  "name": "WiFiPlanner",
+  "description": "Simulador educativo de planificación inalámbrica, diseño de planos RF y mapas de calor Wi-Fi 100% client-side.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

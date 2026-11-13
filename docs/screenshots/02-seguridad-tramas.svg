@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#334155"/>
+  <rect x="160" y="42" width="960" height="636" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <!-- Modal Header -->
+  <text x="188" y="76" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a">Inspección de Tramas · AP-Invitados-02</text>
+  <text x="188" y="96" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#64748b">BSSID 00:1A:2B:4F:11:9A · 2.4 GHz · Ch 6 · Protocolo: WPA2-PSK</text>
+  <rect x="748" y="60" width="136" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="816" y="79" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155">Capturar Handshake</text>
+  <rect x="892" y="60" width="146" height="30" rx="6" fill="#e11d48"/>
+  <text x="965" y="79" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Simular Ataque Deauth</text>
+  <text x="1078" y="79" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#64748b">Cerrar</text>
+
+  <!-- Wireshark Dark Packet Table -->
+  <rect x="160" y="114" width="960" height="270" fill="#020617"/>
+  <rect x="160" y="114" width="960" height="28" fill="#0f172a"/>
+  <text x="180" y="132" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#94a3b8">wlan.fc.type == 0 || eapol</text>
+  <text x="1096" y="132" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#94a3b8">7 tramas capturadas</text>
+
+  <rect x="160" y="142" width="960" height="26" fill="#0f172a" fill-opacity="0.8"/>
+  <text x="180" y="159" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#94a3b8">No.   Tiempo     Origen              Destino             Protocolo   Información de Trama</text>
+
+  <text x="180" y="185" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#cbd5e1">1     0.000000   00:1A:2B:4F:11:9A   Broadcast           802.11      Beacon frame, SSID: "AP-Invitados-02", Ch 6</text>
+  <rect x="160" y="194" width="960" height="26" fill="#451a03" fill-opacity="0.45"/>
+  <text x="180" y="211" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#fde68a">2     0.014210   00:1A:2B:4F:11:9A   A4:83:E7:4C:19:02   EAPOL       Key (Message 1 of 4) · ANonce · PMKID presente</text>
+  <rect x="160" y="220" width="960" height="26" fill="#451a03" fill-opacity="0.45"/>
+  <text x="180" y="237" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#fde68a">3     0.017845   A4:83:E7:4C:19:02   00:1A:2B:4F:11:9A   EAPOL       Key (Message 2 of 4) · SNonce · MIC=8e12...04fd</text>
+  <text x="180" y="263" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#cbd5e1">4     0.021104   00:1A:2B:4F:11:9A   A4:83:E7:4C:19:02   EAPOL       Key (Message 3 of 4) · Install Pairwise + GTK</text>
+  <text x="180" y="289" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#cbd5e1">5     0.023590   A4:83:E7:4C:19:02   00:1A:2B:4F:11:9A   EAPOL       Key (Message 4 of 4) · Confirmación clave</text>
+  <rect x="160" y="300" width="960" height="28" fill="#881337" fill-opacity="0.85"/>
+  <text x="180" y="318" font-family="DejaVu Sans Mono, monospace" font-size="10" font-weight="700" fill="#fecdd3">6     0.105400   00:1A:2B (Spoofed)  A4:83:E7:4C:19:02   802.11 Mgmt Deauthentication [TEXTO CLARO] · SIN PROTECCIÓN PMF</text>
+  <rect x="160" y="328" width="960" height="26" fill="#4c0519" fill-opacity="0.7"/>
+  <text x="180" y="345" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#fda4af">7     0.106120   A4:83:E7:4C:19:02   00:1A:2B:4F:11:9A   Estado STA  Cliente desasociado -&gt; Reconectando (Handshake expuesto)</text>
+
+  <!-- Dissector Detail Box -->
+  <rect x="160" y="384" width="960" height="122" fill="#0f172a"/>
+  <line x1="160" y1="384" x2="1120" y2="384" stroke="#1e293b"/>
+  <text x="184" y="406" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#94a3b8">Detalle de trama seleccionada (IEEE 802.11 / RSN Dissector)</text>
+  <text x="184" y="428" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#6ee7b7">Type/Subtype: Management / Deauthentication (0x0c) · Protected Flag: 0 (Texto Claro)</text>
+  <text x="184" y="448" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#6ee7b7">Transmitter (suplantado): 00:1A:2B:4F:11:9A | Atacante real: DE:AD:BE:EF:00:99</text>
+  <text x="184" y="468" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#6ee7b7">Reason Code: 7 (Class 3 frame received from nonassociated STA)</text>
+  <text x="184" y="488" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#fcd34d">[!] RESULTADO: Cliente desconectado. El atacante fuerza una nueva captura del 4-Way Handshake.</text>
+
+  <!-- Lower Diagnostic Card -->
+  <rect x="188" y="524" width="904" height="130" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+  <text x="208" y="550" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#78350f">Diagnóstico WPA2-PSK: Vulnerabilidades teóricas</text>
+  <text x="208" y="574" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#451a03">• Ataque de diccionario offline (4-Way Handshake): capturando M1 + M2 el atacante prueba claves offline con hashcat -m 22000.</text>
+  <text x="208" y="596" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#451a03">• Ataque PMKID (sin clientes): el AP expone el PMKID en RSN IE del mensaje M1 derivado de la PMK compartida.</text>
+  <text x="208" y="618" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#451a03">• Tramas Deauth en texto claro: sin PMF (802.11w) obligatorio, un atacante expulsa estaciones legítimas en cualquier momento.</text>
+  <text x="208" y="640" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#047857">✓ Solución recomendada: migrar a WPA3-SAE (Dragonfly + PFS + PMF obligatorio).</text>
+</svg>

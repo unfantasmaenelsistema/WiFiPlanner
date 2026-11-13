@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <radialGradient id="hm1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dc2626" stop-opacity="0.82"/>
+      <stop offset="28%" stop-color="#facc15" stop-opacity="0.72"/>
+      <stop offset="56%" stop-color="#22c55e" stop-opacity="0.65"/>
+      <stop offset="82%" stop-color="#3b82f6" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hm2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dc2626" stop-opacity="0.80"/>
+      <stop offset="32%" stop-color="#facc15" stop-opacity="0.70"/>
+      <stop offset="62%" stop-color="#22c55e" stop-opacity="0.62"/>
+      <stop offset="86%" stop-color="#3b82f6" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="35%" stop-color="#facc15"/>
+      <stop offset="65%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <clipPath id="planClip"><rect x="260" y="102" width="700" height="390"/></clipPath>
+  </defs>
+
+  <rect width="1280" height="720" fill="#e2e8f0"/>
+  <!-- Top Header -->
+  <rect width="1280" height="52" fill="#ffffff"/>
+  <line x1="0" y1="52" x2="1280" y2="52" stroke="#e2e8f0"/>
+  <circle cx="34" cy="26" r="13" fill="#0f172a"/>
+  <path d="M27 28 a10 10 0 0 1 14 0 M30 31 a6 6 0 0 1 8 0" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="56" y="31" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a">WiFiPlanner</text>
+  <text x="200" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="500" fill="#475569">Centrar Plano</text>
+  <text x="295" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="500" fill="#475569">Tabla de Canales</text>
+  <text x="415" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="500" fill="#475569">Modelo FSPL</text>
+  <text x="510" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#0369a1">Auditar Red</text>
+  <text x="600" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#047857">Misiones (CTF)</text>
+  <rect x="1038" y="12" width="102" height="28" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="1089" y="30" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155">Compartir URL</text>
+  <rect x="1148" y="12" width="116" height="28" rx="6" fill="#0284c7"/>
+  <text x="1206" y="30" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Exportar Proyecto</text>
+
+  <!-- Left Sidebar -->
+  <rect x="0" y="52" width="228" height="668" fill="#ffffff"/>
+  <line x1="228" y1="52" x2="228" y2="720" stroke="#e2e8f0"/>
+  <text x="16" y="76" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b">Herramientas de diseño</text>
+  <rect x="16" y="88" width="196" height="32" rx="6" fill="#f0f9ff" stroke="#0284c7"/>
+  <text x="30" y="108" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="600" fill="#0369a1">Seleccionar / Mover</text>
+  <rect x="16" y="126" width="196" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="30" y="146" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="500" fill="#334155">Añadir AP</text>
+  <rect x="16" y="164" width="196" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="30" y="184" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="500" fill="#334155">Añadir Muro (Ladrillo -6 dB)</text>
+
+  <line x1="0" y1="212" x2="228" y2="212" stroke="#e2e8f0"/>
+  <text x="16" y="234" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#64748b">Capas y configuración</text>
+  <text x="16" y="258" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Cobertura (Heatmap)</text>
+  <rect x="194" y="246" width="14" height="14" rx="3" fill="#0284c7"/>
+  <text x="16" y="284" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">Banda: Todas las bandas</text>
+  <text x="16" y="308" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#334155">Trazado de rayo RF</text>
+  <rect x="194" y="296" width="14" height="14" rx="3" fill="#0284c7"/>
+  <text x="16" y="334" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#334155">Cuadrícula métrica</text>
+  <rect x="194" y="322" width="14" height="14" rx="3" fill="#0284c7"/>
+  <text x="16" y="360" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#334155">Plano de oficina base</text>
+  <rect x="194" y="348" width="14" height="14" rx="3" fill="#0284c7"/>
+
+  <line x1="0" y1="540" x2="228" y2="540" stroke="#e2e8f0"/>
+  <text x="16" y="564" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#475569">Atenuación de muros</text>
+  <line x1="16" y1="582" x2="36" y2="582" stroke="#64748b" stroke-width="2.5"/><text x="44" y="586" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">Pladur</text><text x="210" y="586" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#475569">-3 dB</text>
+  <line x1="16" y1="602" x2="36" y2="602" stroke="#c2410c" stroke-width="4"/><text x="44" y="606" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">Ladrillo</text><text x="210" y="606" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#475569">-6 dB</text>
+  <line x1="16" y1="622" x2="36" y2="622" stroke="#0f172a" stroke-width="5"/><text x="44" y="626" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">Hormigón / Metal</text><text x="210" y="626" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#475569">-12 dB</text>
+  <text x="16" y="692" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#0369a1">unfantasmaenelsistema.com</text>
+
+  <!-- Canvas Sub-toolbar -->
+  <rect x="228" y="52" width="764" height="34" fill="#f8fafc"/>
+  <line x1="228" y1="86" x2="992" y2="86" stroke="#e2e8f0"/>
+  <text x="242" y="73" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="500" fill="#334155">Modo selección: arrastra los APs o mueve el cursor para medir RSSI y SNR en vivo.</text>
+  <text x="978" y="73" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" font-weight="600" fill="#047857">Señal: -54.2 dBm (5 GHz) · SNR 38 dB · ~1148 Mbps</text>
+
+  <!-- Floor Plan Canvas -->
+  <rect x="260" y="102" width="700" height="390" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Rooms -->
+  <g clip-path="url(#planClip)">
+    <rect x="260" y="102" width="180" height="150" fill="#f8fafc"/>
+    <rect x="440" y="102" width="280" height="150" fill="#f1f5f9"/>
+    <rect x="720" y="102" width="240" height="150" fill="#f8fafc"/>
+    <rect x="260" y="252" width="130" height="120" fill="#e2e8f0"/>
+    <rect x="260" y="372" width="180" height="120" fill="#f1f5f9"/>
+    <rect x="440" y="252" width="400" height="240" fill="#ffffff"/>
+    <rect x="840" y="252" width="120" height="240" fill="#f1f5f9"/>
+
+    <!-- Heatmap gradients -->
+    <circle cx="350" cy="180" r="240" fill="url(#hm1)"/>
+    <circle cx="670" cy="360" r="320" fill="url(#hm2)"/>
+
+    <!-- Room labels -->
+    <text x="350" y="162" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#475569">Vestíbulo / Recepción</text>
+    <text x="580" y="175" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#475569">Sala de Juntas</text>
+    <text x="840" y="175" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#475569">Despacho Dirección</text>
+    <text x="325" y="315" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#334155">Cuarto Rack / IT</text>
+    <text x="350" y="432" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#475569">Office / Comedor</text>
+    <text x="640" y="388" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="600" fill="#334155">Zona Open Space</text>
+    <text x="900" y="372" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#475569">Archivo</text>
+
+    <!-- Walls -->
+    <line x1="440" y1="102" x2="440" y2="210" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="260" y1="252" x2="390" y2="252" stroke="#0f172a" stroke-width="5.5" stroke-linecap="round"/>
+    <line x1="390" y1="252" x2="390" y2="372" stroke="#0f172a" stroke-width="5.5" stroke-linecap="round"/>
+    <line x1="440" y1="252" x2="560" y2="252" stroke="#c2410c" stroke-width="4.2" stroke-linecap="round"/>
+    <line x1="600" y1="252" x2="720" y2="252" stroke="#c2410c" stroke-width="4.2" stroke-linecap="round"/>
+    <line x1="720" y1="102" x2="720" y2="220" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="840" y1="252" x2="840" y2="492" stroke="#c2410c" stroke-width="4.2" stroke-linecap="round"/>
+    <line x1="260" y1="372" x2="440" y2="372" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Live RF Ray Trace with wall intersection dots -->
+    <line x1="350" y1="180" x2="545" y2="320" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <circle cx="440" cy="245" r="4.5" fill="#f97316" stroke="#ffffff" stroke-width="1.5"/>
+    <circle cx="450" cy="252" r="4.5" fill="#f97316" stroke="#ffffff" stroke-width="1.5"/>
+    <rect x="554" y="298" width="218" height="20" rx="4" fill="#0f172a" fill-opacity="0.9"/>
+    <text x="562" y="311" font-family="DejaVu Sans Mono, monospace" font-size="10" font-weight="600" fill="#f8fafc">24.0 m · 1 muro (-6 dB) · -54.2 dBm</text>
+
+    <!-- AP 1 -->
+    <circle cx="350" cy="180" r="20" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <circle cx="350" cy="180" r="14" fill="#ffffff" stroke="#0284c7" stroke-width="2.5"/>
+    <rect x="292" y="198" width="116" height="28" rx="4" fill="#0f172a"/>
+    <text x="350" y="210" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">AP-Recepción-01</text>
+    <text x="350" y="221" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#38bdf8">5 GHz · Ch 36 · 80M</text>
+
+    <!-- AP 2 -->
+    <circle cx="670" cy="360" r="14" fill="#ffffff" stroke="#d97706" stroke-width="2.5"/>
+    <rect x="612" y="378" width="116" height="28" rx="4" fill="#1e293b"/>
+    <text x="670" y="390" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">AP-OpenSpace-02</text>
+    <text x="670" y="401" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#fcd34d">2.4 GHz · Ch 6 · 20M</text>
+  </g>
+
+  <!-- Heatmap Legend -->
+  <rect x="242" y="446" width="222" height="54" rx="6" fill="#ffffff" fill-opacity="0.95" stroke="#cbd5e1"/>
+  <text x="252" y="462" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="700" fill="#1e293b">Cobertura RSSI (FSPL)</text>
+  <text x="454" y="462" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#64748b">10 px = 1 m</text>
+  <rect x="252" y="469" width="202" height="10" rx="2" fill="url(#leg)"/>
+  <text x="252" y="492" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#475569">&gt;-50 dBm</text>
+  <text x="352" y="492" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#475569">-62 dBm</text>
+  <text x="454" y="492" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#475569">&lt;-75 dBm</text>
+
+  <!-- Bottom Spectrum Analyzer -->
+  <rect x="228" y="514" width="764" height="206" fill="#ffffff"/>
+  <rect x="228" y="514" width="764" height="32" fill="#f8fafc"/>
+  <line x1="228" y1="514" x2="992" y2="514" stroke="#cbd5e1"/>
+  <line x1="228" y1="546" x2="992" y2="546" stroke="#e2e8f0"/>
+  <text x="244" y="534" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#1e293b">Analizador de Espectro</text>
+  <rect x="392" y="520" width="196" height="20" rx="5" fill="#e2e8f0"/>
+  <rect x="462" y="522" width="58" height="16" rx="4" fill="#ffffff"/>
+  <text x="427" y="534" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="600" fill="#475569">2.4 GHz (1)</text>
+  <text x="491" y="534" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="700" fill="#0f172a">5 GHz (1)</text>
+  <text x="554" y="534" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="600" fill="#475569">6 GHz (0)</text>
+  <text x="976" y="534" text-anchor="end" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#047857">✓ Espectro limpio · Sin conflictos</text>
+
+  <!-- Dark Spectrum Plot -->
+  <rect x="228" y="546" width="540" height="174" fill="#020617"/>
+  <line x1="268" y1="576" x2="748" y2="576" stroke="#1e293b"/>
+  <line x1="268" y1="620" x2="748" y2="620" stroke="#1e293b"/>
+  <line x1="268" y1="664" x2="748" y2="664" stroke="#1e293b"/>
+  <line x1="268" y1="696" x2="748" y2="696" stroke="#334155"/>
+  <text x="262" y="580" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#64748b">-30</text>
+  <text x="262" y="624" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#64748b">-55</text>
+  <text x="262" y="668" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#64748b">-80</text>
+  <!-- 80 MHz OFDM Bell Curve -->
+  <path d="M 310 696 C 325 696, 330 584, 348 584 L 444 584 C 462 584, 467 696, 482 696 Z" fill="#38bdf8" fill-opacity="0.30" stroke="#38bdf8" stroke-width="2.2"/>
+  <text x="396" y="576" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="600" fill="#ffffff">AP-Recepción-01 (80 MHz)</text>
+  <text x="396" y="711" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#94a3b8">Ch 36–48 (5180–5240 MHz)</text>
+  <text x="610" y="711" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="9" fill="#94a3b8">Ch 100–140 (DFS) · Ch 149–165</text>
+
+  <!-- Interference Side Rail -->
+  <line x1="768" y1="546" x2="768" y2="720" stroke="#e2e8f0"/>
+  <text x="782" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#1e293b">Diagnóstico CCI / ACI</text>
+  <text x="976" y="568" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#64748b">0 alertas</text>
+  <text x="782" y="592" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">Todos los APs operan sin solapamiento</text>
+  <text x="782" y="608" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">co-canal (&gt; -85 dBm) ni ACI.</text>
+
+  <!-- Right Inspector Panel -->
+  <rect x="992" y="52" width="288" height="668" fill="#ffffff"/>
+  <line x1="992" y1="52" x2="992" y2="720" stroke="#e2e8f0"/>
+  <text x="1012" y="76" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#64748b">Punto de Acceso seleccionado</text>
+  <text x="1012" y="96" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a">AP-Recepción-01</text>
+  <line x1="1012" y1="108" x2="1260" y2="108" stroke="#e2e8f0"/>
+
+  <text x="1012" y="130" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#334155">Nombre del AP</text>
+  <rect x="1012" y="138" width="248" height="30" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="1022" y="157" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#0f172a">AP-Recepción-01</text>
+
+  <text x="1012" y="190" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#334155">Banda de Frecuencia</text>
+  <rect x="1012" y="198" width="248" height="30" rx="6" fill="#f1f5f9"/>
+  <rect x="1096" y="201" width="80" height="24" rx="4" fill="#ffffff"/>
+  <text x="1054" y="217" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#475569">2.4 GHz</text>
+  <text x="1136" y="217" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#0f172a">5 GHz</text>
+  <text x="1218" y="217" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#475569">6 GHz</text>
+
+  <text x="1012" y="250" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#334155">Canal</text>
+  <text x="1260" y="250" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#64748b">5180 MHz</text>
+  <rect x="1012" y="258" width="248" height="30" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="1022" y="277" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#0f172a">Canal 36 · 5180 MHz</text>
+
+  <text x="1012" y="310" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#334155">Ancho de Canal</text>
+  <rect x="1012" y="318" width="248" height="30" rx="6" fill="#f1f5f9"/>
+  <rect x="1138" y="321" width="58" height="24" rx="4" fill="#ffffff"/>
+  <text x="1044" y="337" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#475569">20 MHz</text>
+  <text x="1104" y="337" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#475569">40 MHz</text>
+  <text x="1167" y="337" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="10" font-weight="700" fill="#0f172a">80 MHz</text>
+  <text x="1230" y="337" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="10" fill="#475569">160</text>
+
+  <text x="1012" y="372" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#334155">Potencia TX</text>
+  <text x="1260" y="372" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" font-weight="700" fill="#0369a1">17 dBm (50.1 mW)</text>
+  <rect x="1012" y="384" width="248" height="6" rx="3" fill="#e2e8f0"/>
+  <rect x="1012" y="384" width="120" height="6" rx="3" fill="#0284c7"/>
+  <circle cx="1132" cy="387" r="7" fill="#0284c7" stroke="#ffffff" stroke-width="2"/>
+
+  <text x="1012" y="418" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#334155">Protocolo de Seguridad</text>
+  <rect x="1012" y="426" width="248" height="30" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="1022" y="445" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#0f172a">WPA3-SAE</text>
+
+  <rect x="1012" y="470" width="248" height="32" rx="6" fill="#0f172a"/>
+  <text x="1136" y="490" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Analizar Seguridad (Tramas)</text>
+
+  <line x1="1012" y1="520" x2="1260" y2="520" stroke="#e2e8f0"/>
+  <text x="1012" y="540" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#334155">Telemetría FSPL (Espacio Libre)</text>
+  <text x="1012" y="562" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">FSPL a 1 metro</text><text x="1260" y="562" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#0f172a">46.7 dB</text>
+  <text x="1012" y="582" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">Radio zona roja (&gt; -50 dBm)</text><text x="1260" y="582" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#0f172a">10.3 m</text>
+  <text x="1012" y="602" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">Radio límite (-75 dBm)</text><text x="1260" y="602" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#0f172a">120.0 m</text>
+  <text x="1012" y="622" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" fill="#475569">Piso de ruido térmico</text><text x="1260" y="622" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#0f172a">-88 dBm</text>
+</svg>

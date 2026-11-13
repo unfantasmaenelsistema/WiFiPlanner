@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <radialGradient id="whhm" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dc2626" stop-opacity="0.72"/>
+      <stop offset="35%" stop-color="#facc15" stop-opacity="0.65"/>
+      <stop offset="70%" stop-color="#22c55e" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.1"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#cbd5e1"/>
+  <!-- Top CTF HUD -->
+  <rect width="1280" height="44" fill="#0f172a"/>
+  <rect x="20" y="10" width="38" height="22" rx="4" fill="#064e3b" stroke="#10b981"/>
+  <text x="39" y="25" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="11" font-weight="700" fill="#6ee7b7">CTF</text>
+  <text x="72" y="26" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">Misión 2 (Warehouse): Nave Logística con Muros de Hormigón</text>
+  <text x="1150" y="26" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" font-weight="700" fill="#6ee7b7">Cob: 98% | CCI: 0 | ACI: 0 | WPA3: 3/3</text>
+
+  <!-- Warehouse Plan Background -->
+  <rect x="80" y="76" width="1120" height="600" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+  <circle cx="290" cy="240" r="320" fill="url(#whhm)"/>
+  <circle cx="640" cy="490" r="320" fill="url(#whhm)"/>
+  <circle cx="960" cy="240" r="320" fill="url(#whhm)"/>
+  <line x1="460" y1="76" x2="460" y2="320" stroke="#0f172a" stroke-width="7"/>
+  <line x1="820" y1="76" x2="820" y2="320" stroke="#0f172a" stroke-width="7"/>
+  <line x1="80" y1="380" x2="400" y2="380" stroke="#0f172a" stroke-width="7"/>
+  <line x1="520" y1="380" x2="960" y2="380" stroke="#0f172a" stroke-width="7"/>
+  <circle cx="290" cy="240" r="14" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+  <circle cx="640" cy="490" r="14" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+  <circle cx="960" cy="240" r="14" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+
+  <!-- Backdrop dim -->
+  <rect width="1280" height="720" fill="#020617" fill-opacity="0.72"/>
+
+  <!-- Hacker Terminal Modal -->
+  <rect x="330" y="102" width="620" height="516" rx="12" fill="#020617" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="330" y="102" width="620" height="40" rx="12" fill="#0f172a"/>
+  <circle cx="356" cy="122" r="5.5" fill="#34d399"/>
+  <text x="372" y="126" font-family="DejaVu Sans Mono, monospace" font-size="12" font-weight="600" fill="#6ee7b7">root@wifiplanner:~/ctf# verify_rf_design</text>
+  <text x="926" y="126" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#94a3b8">[ESC] Cerrar</text>
+
+  <text x="360" y="172" font-family="DejaVu Sans Mono, monospace" font-size="12" fill="#6ee7b7">[+] RF_PROPAGATION_CHECK ........... OK (98.4%)</text>
+  <text x="360" y="192" font-family="DejaVu Sans Mono, monospace" font-size="12" fill="#6ee7b7">[+] SPECTRUM_CCI_ACI_SCAN .......... CLEAN (0 conflictos)</text>
+  <text x="360" y="212" font-family="DejaVu Sans Mono, monospace" font-size="12" fill="#6ee7b7">[+] IEEE_802_11_SECURITY ........... WPA3-SAE VERIFIED</text>
+
+  <rect x="360" y="232" width="560" height="96" rx="8" fill="#064e3b" fill-opacity="0.45" stroke="#34d399"/>
+  <text x="640" y="256" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#34d399">// AUTENTICACIÓN RF SUPERADA · FLAG DESBLOQUEADA //</text>
+  <text x="640" y="290" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="700" fill="#a7f3d0">FLAG{RF_M4st3r_Pl4nn3r}</text>
+  <rect x="588" y="300" width="104" height="22" rx="4" fill="#10b981"/>
+  <text x="640" y="315" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="10" font-weight="700" fill="#020617">Copiar Flag</text>
+
+  <!-- Checks list -->
+  <rect x="360" y="346" width="560" height="34" rx="5" fill="#064e3b" fill-opacity="0.28" stroke="#10b981" stroke-opacity="0.35"/>
+  <text x="374" y="367" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#6ee7b7">[PASS] Cobertura espacial &gt; 90% (&gt;= -75 dBm)</text>
+  <text x="906" y="367" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#a7f3d0">98.4% (378/384 celdas)</text>
+
+  <rect x="360" y="388" width="560" height="34" rx="5" fill="#064e3b" fill-opacity="0.28" stroke="#10b981" stroke-opacity="0.35"/>
+  <text x="374" y="409" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#6ee7b7">[PASS] 0 Interferencias Co-Canal (CCI)</text>
+  <text x="906" y="409" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#a7f3d0">0 conflictos CCI</text>
+
+  <rect x="360" y="430" width="560" height="34" rx="5" fill="#064e3b" fill-opacity="0.28" stroke="#10b981" stroke-opacity="0.35"/>
+  <text x="374" y="451" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#6ee7b7">[PASS] 0 Solapamiento de Canal Adyacente (ACI)</text>
+  <text x="906" y="451" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#a7f3d0">0 alertas ACI</text>
+
+  <rect x="360" y="472" width="560" height="34" rx="5" fill="#064e3b" fill-opacity="0.28" stroke="#10b981" stroke-opacity="0.35"/>
+  <text x="374" y="493" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#6ee7b7">[PASS] WPA3-SAE activado en todos los APs</text>
+  <text x="906" y="493" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#a7f3d0">3/3 APs con WPA3-SAE</text>
+
+  <rect x="360" y="514" width="560" height="34" rx="5" fill="#064e3b" fill-opacity="0.28" stroke="#10b981" stroke-opacity="0.35"/>
+  <text x="374" y="535" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#6ee7b7">[PASS] Integridad estructural (muros de hormigón)</text>
+  <text x="906" y="535" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#a7f3d0">5/5 muros intactos</text>
+
+  <line x1="360" y1="566" x2="920" y2="566" stroke="#1e293b"/>
+  <text x="360" y="592" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#94a3b8">Misión 2 · Warehouse</text>
+  <text x="920" y="592" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="11" fill="#34d399">Compartir solución por URL</text>
+</svg>
