@@ -27,6 +27,7 @@
   <body class="h-screen w-screen overflow-hidden bg-slate-50 text-slate-900 select-none flex flex-col">
     <!-- Barra Superior (Contrato de 3 zonas) -->
     <header
+      id="app-header"
       class="h-14 shrink-0 bg-white border-b border-slate-200 px-6 flex items-center justify-between gap-8 z-20"
     >
       <!-- Zona 1: Marca + Logo sin distorsión -->
@@ -46,7 +47,7 @@
       </a>
 
       <!-- Zona 2: Enlaces funcionales de navegación / referencia -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+      <nav class="order-3 w-full md:order-none md:w-auto flex flex-wrap md:flex-nowrap items-center gap-x-6 gap-y-1.5 text-sm font-medium text-slate-600">
         <button
           type="button"
           id="nav-fit-canvas"
@@ -119,7 +120,7 @@
     </header>
 
     <!-- Área de Trabajo Principal (3 Columnas: Herramientas | Lienzo | Propiedades) -->
-    <div class="flex-1 min-h-0 flex overflow-hidden">
+    <div id="workspace" class="flex-1 min-h-0 flex overflow-hidden">
       <!-- PANEL LATERAL IZQUIERDO: Herramientas y Configuración -->
       <aside
         aria-label="Panel de herramientas y configuración"
@@ -407,6 +408,7 @@
       <main class="flex-1 min-w-0 relative bg-slate-100 flex flex-col overflow-hidden">
         <!-- Barra contextual sobre el lienzo con sonda de señal RSSI en vivo -->
         <div
+          id="canvas-toolbar"
           class="h-10 shrink-0 bg-slate-50 border-b border-slate-200 px-4 flex items-center justify-between gap-4 text-xs text-slate-600"
         >
           <div class="flex items-center gap-3 min-w-0">
@@ -601,7 +603,7 @@
           aria-label="Analizador de espectro"
           class="shrink-0 bg-white border-t border-slate-200 flex flex-col"
         >
-          <div class="h-10 shrink-0 px-4 border-b border-slate-200 flex items-center justify-between gap-4 bg-slate-50/80">
+          <div id="spectrum-header" class="h-10 shrink-0 px-4 border-b border-slate-200 flex items-center justify-between gap-4 bg-slate-50/80">
             <div class="flex items-center gap-4 min-w-0">
               <button
                 type="button"
@@ -1221,9 +1223,7 @@
             <div
               id="flag-value-text"
               class="text-lg sm:text-xl font-bold text-emerald-200 tracking-tight select-all"
-            >
-              FLAG{RF_M4st3r_Pl4nn3r}
-            </div>
+            ></div>
             <div class="pt-1 flex justify-center gap-2">
               <button
                 type="button"
@@ -1373,10 +1373,12 @@
               color: '#0284c7',
               colorSoft: 'rgba(2, 132, 199, 0.14)',
               channels: [
-                36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 132, 136,
-                140, 149, 153, 157, 161, 165,
+                36, 40, 44, 48, 52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124,
+                128, 132, 136, 140, 149, 153, 157, 161, 165,
               ],
-              dfsChannels: [52, 56, 60, 64, 100, 104, 108, 112, 116, 132, 136, 140],
+              dfsChannels: [52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140],
+              // UNII-3 (149-165): habituales en EE. UU., no disponibles para Wi-Fi en España / UE
+              nonEuChannels: [149, 153, 157, 161, 165],
               widths: [20, 40, 80, 160],
               freqFromChannel: (ch) => 5000 + ch * 5,
             },
@@ -1409,6 +1411,18 @@
             plaster: { label: 'Pladur', lossDb: 3, color: '#64748b', width: 2.8 },
             brick: { label: 'Ladrillo', lossDb: 6, color: '#c2410c', width: 4.2 },
             concrete: { label: 'Hormigón / Metal', lossDb: 12, color: '#0f172a', width: 5.5 },
+          },
+
+          /**
+           * Límite de PIRE orientativo en España / UE (ETSI EN 300 328 y EN 301 893, 6 GHz LPI):
+           * 2.4 GHz 20 dBm · 5 GHz 36-64 23 dBm · 5 GHz 100-140 30 dBm · 6 GHz 23 dBm.
+           */
+          getEtsiMaxEirpDbm(ap) {
+            if (ap.band === '2.4 GHz') return 20;
+            if (ap.band === '6 GHz') return 23;
+            if (ap.channel >= 100 && ap.channel <= 140) return 30;
+            if (ap.channel <= 64) return 23;
+            return null; // UNII-3: no disponible para Wi-Fi en la UE
           },
 
           getCenterFreqMHz(ap) {
@@ -1447,12 +1461,13 @@
               const groups5G = {
                 40: [
                   [36, 40], [44, 48], [52, 56], [60, 64],
-                  [100, 104], [108, 112], [116, 120], [132, 136],
+                  [100, 104], [108, 112], [116, 120], [124, 128], [132, 136],
                   [149, 153], [157, 161],
                 ],
                 80: [
                   [36, 40, 44, 48], [52, 56, 60, 64],
-                  [100, 104, 108, 112], [149, 153, 157, 161],
+                  [100, 104, 108, 112], [116, 120, 124, 128], [132, 136, 140, 144],
+                  [149, 153, 157, 161],
                 ],
                 160: [
                   [36, 40, 44, 48, 52, 56, 60, 64],
@@ -1949,7 +1964,7 @@
                     detail: `${a.name} y ${b.name} comparten canal con ${maxSignal.toFixed(1)} dBm entre ellos (> -85 dBm).`,
                     apIds: [a.id, b.id],
                   });
-                } else if (overlapMHz > 0 && maxSignal > -90) {
+                } else if (a.channel !== b.channel && overlapMHz > 0 && maxSignal > -90) {
                   // Detección ACI: canales diferentes con solapamiento espectral (ej. 1 y 3 en 2.4 GHz, o canal vinculado en 5/6 GHz)
                   apFlags[a.id].aci = true;
                   apFlags[b.id].aci = true;
@@ -2180,10 +2195,12 @@
             Object.assign(ap, patch);
             const spec = RFSpec.BANDS[ap.band];
             if (!spec.channels.includes(ap.channel)) {
-              ap.channel = spec.channels[0];
+              // Canal recomendado al cambiar de banda: 1 en 2.4 GHz, 36 en 5 GHz y el primer PSC en 6 GHz
+              ap.channel = ap.band === '6 GHz' ? spec.pscChannels[0] : spec.channels[0];
             }
             if (!spec.widths.includes(ap.channelWidth)) {
-              ap.channelWidth = spec.widths[spec.widths.length - 1];
+              // 20 MHz es el ancho seguro: 40 MHz en 2.4 GHz provoca ACI en casi toda la banda
+              ap.channelWidth = spec.widths[0];
             }
             if (ap.band === '6 GHz' && (ap.security === 'Abierto' || ap.security === 'WPA2-PSK')) {
               ap.security = 'WPA3-SAE';
@@ -4053,9 +4070,11 @@
                 ? 'Canal ortogonal recomendado (1, 6 u 11) sin solapamiento.'
                 : 'Advertencia: este canal se solapa con canales adyacentes en 2.4 GHz.';
             } else if (ap.band === '5 GHz') {
-              chNote.textContent = spec.dfsChannels.includes(ap.channel)
-                ? 'Canal DFS: sujeto a detección de radar meteorológico/aeronáutico.'
-                : 'Canal UNII-1 / UNII-3 libre de DFS.';
+              chNote.textContent = spec.nonEuChannels.includes(ap.channel)
+                ? 'Canal UNII-3 (habitual en EE. UU.): no disponible para Wi-Fi en España ni en la UE.'
+                : spec.dfsChannels.includes(ap.channel)
+                  ? 'Canal DFS: sujeto a detección de radar meteorológico/aeronáutico.'
+                  : 'Canal UNII-1 libre de DFS.';
             } else {
               chNote.textContent = spec.pscChannels.includes(ap.channel)
                 ? 'Canal PSC (Preferred Scanning Channel) para escaneo rápido.'
@@ -4692,6 +4711,25 @@
                 }
               }
 
+              const etsiMax = RFSpec.getEtsiMaxEirpDbm(ap);
+              if (etsiMax === null) {
+                findings.push({
+                  severity: 'critical',
+                  category: 'Normativa',
+                  title: `${ap.name} usa el canal ${ap.channel} (UNII-3)`,
+                  detail: 'Los canales 149-165 no están disponibles para Wi-Fi en España ni en la UE. Elige 36-64 o 100-140 (DFS).',
+                  apId: ap.id,
+                });
+              } else if (ap.txPowerDbm > etsiMax) {
+                findings.push({
+                  severity: 'critical',
+                  category: 'Normativa',
+                  title: `${ap.name} supera la PIRE máxima de la UE (${ap.txPowerDbm} > ${etsiMax} dBm)`,
+                  detail: `En ${ap.band}${ap.band === '5 GHz' ? ` (canal ${ap.channel})` : ''} el límite orientativo ETSI es ${etsiMax} dBm de PIRE (incluye la ganancia de antena). Baja la potencia.`,
+                  apId: ap.id,
+                });
+              }
+
               if (ap.txPowerDbm >= 24) {
                 findings.push({
                   severity: 'warning',
@@ -4977,7 +5015,7 @@
               tag: 'Misión 2 · Warehouse',
               title: 'Nave Logística con Muros de Hormigón',
               brief: 'Da cobertura > 90% a toda la nave con solo 3 APs sin interferencias, cruzando muros de hormigón (-12 dB) y con WPA3-SAE.',
-              hint: 'Reubica los 3 APs en zonas estratégicas, aprovecha 2.4 GHz (Ch 1, 6, 11 a 20 MHz) para atravesar el hormigón con potencia adecuada y evita eliminar los muros.',
+              hint: 'Reubica los 3 APs en zonas estratégicas, aprovecha 2.4 GHz (Ch 1, 6, 11 a 20 MHz) para atravesar el hormigón con potencia adecuada y no toques los muros: se comprueba que los 5 muros de hormigón originales siguen en su sitio.',
               minAps: 1,
               maxAps: 3,
               minConcreteWalls: 5,
@@ -5084,6 +5122,35 @@
             });
           },
 
+          /** ¿Siguen en el plano los muros de hormigón originales de la misión (misma posición y material)? */
+          countIntactConcreteWalls(mission) {
+            const originals = mission.scenario.walls.filter((w) => w.material === 'concrete');
+            const same = (a, b) => Math.abs(a - b) < 0.05;
+            return originals.filter((o) =>
+              State.walls.some(
+                (w) =>
+                  w.material === 'concrete' &&
+                  ((same(w.x1, o.x1) && same(w.y1, o.y1) && same(w.x2, o.x2) && same(w.y2, o.y2)) ||
+                    (same(w.x1, o.x2) && same(w.y1, o.y2) && same(w.x2, o.x1) && same(w.y2, o.y1)))
+              )
+            ).length;
+          },
+
+          /**
+           * Flag de cada misión, generada al validar (no está escrita en el HTML).
+           * FNV-1a de 32 bits: basta para que cada misión tenga su código y no aparezca en claro.
+           */
+          computeFlag(mission) {
+            const seed = `wifiplanner|${mission ? mission.id : 'sandbox'}|RF_M4st3r_Pl4nn3r`;
+            let h = 0x811c9dc5;
+            for (let i = 0; i < seed.length; i++) {
+              h ^= seed.charCodeAt(i);
+              h = Math.imul(h, 0x01000193) >>> 0;
+            }
+            const tag = mission ? `M${mission.id.split('-')[1]}` : 'LIBRE';
+            return `FLAG{RF_${tag}_${h.toString(16).padStart(8, '0')}}`;
+          },
+
           getActiveMission() {
             if (!State.activeMissionId) return null;
             return this.MISSIONS.find((m) => m.id === State.activeMissionId) || null;
@@ -5168,7 +5235,6 @@
             const aciCount = alerts.filter((a) => a.type === 'ACI').length;
             const wpa3Count = State.aps.filter((a) => a.security === 'WPA3-SAE').length;
             const allWpa3 = State.aps.length > 0 && wpa3Count === State.aps.length;
-            const concreteCount = State.walls.filter((w) => w.material === 'concrete').length;
 
             const mission = this.getActiveMission();
             const checks = [
@@ -5209,10 +5275,11 @@
                 });
               }
               if (mission.minConcreteWalls > 0) {
+                const intact = this.countIntactConcreteWalls(mission);
                 checks.push({
-                  label: `Integridad estructural (muros de hormigón)`,
-                  detail: `${concreteCount}/${mission.minConcreteWalls} muros intactos`,
-                  passed: concreteCount >= mission.minConcreteWalls,
+                  label: `Integridad estructural (muros de hormigón originales)`,
+                  detail: `${intact}/${mission.minConcreteWalls} muros intactos`,
+                  passed: intact >= mission.minConcreteWalls,
                 });
               }
             } else {
@@ -5345,8 +5412,10 @@
                 `[+] RF_PROPAGATION_CHECK ........... OK (${res.coveragePct.toFixed(1)}%)\n` +
                 `[+] SPECTRUM_CCI_ACI_SCAN .......... CLEAN (0 conflictos)\n` +
                 `[+] IEEE_802_11_SECURITY ........... WPA3-SAE VERIFIED`;
+              document.getElementById('flag-value-text').textContent = this.computeFlag(res.mission);
               secretBox.classList.remove('hidden');
             } else {
+              document.getElementById('flag-value-text').textContent = '';
               banner.className = 'text-xs leading-relaxed whitespace-pre-wrap text-rose-300';
               banner.textContent =
                 `[!] ACCESS DENIED — El diseño actual no cumple todos los criterios CTF.\n` +
@@ -5600,20 +5669,28 @@
             const params = new URLSearchParams(window.location.search);
             const stateParam = params.get('state');
             if (!stateParam) return false;
-            return await this.importToken(stateParam);
+            const ok = await this.importToken(stateParam);
+            if (ok) {
+              // A partir de aquí manda el autoguardado: se quita ?state para que recargar no deshaga cambios
+              try {
+                const clean = new URL(window.location.href);
+                clean.searchParams.delete('state');
+                window.history.replaceState(null, '', clean.toString());
+              } catch {
+                // entorno que no permite replaceState
+              }
+              this.saveToLocalStorage();
+            }
+            return ok;
           },
 
           async openShareModal() {
             const { token, jsonBytes } = await this.encodeState();
             const url = new URL(window.location.href);
             url.searchParams.set('state', token);
+            // El enlace se ofrece para copiar, pero la barra de direcciones no cambia: si se fijara ?state,
+            // al recargar se volvería al escenario compartido y se perderían los cambios posteriores
             const fullUrl = url.toString();
-
-            try {
-              window.history.replaceState(null, '', fullUrl);
-            } catch {
-              // fallback silencioso si el entorno restringe replaceState
-            }
 
             document.getElementById('share-url-output').value = fullUrl;
             document.getElementById('share-url-bytes').textContent = `${jsonBytes} B JSON → ${token.length} chars Base64`;
