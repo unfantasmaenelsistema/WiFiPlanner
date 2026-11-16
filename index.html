@@ -3770,7 +3770,7 @@
                       </tr>
                       <tr>
                         <td class="px-4 py-3 font-semibold text-sky-700">5 GHz</td>
-                        <td class="px-4 py-3 font-mono-tabular">36–48, 52–64 (DFS), 100–140 (DFS), 149–165</td>
+                        <td class="px-4 py-3 font-mono-tabular">36–48, 52–64 (DFS), 100–140 (DFS)<br><span class="text-rose-600">149–165: no permitidos en la UE</span></td>
                         <td class="px-4 py-3 font-mono-tabular">20, 40, 80, 160 MHz</td>
                         <td class="px-4 py-3 text-slate-600">En oficinas densas se prefiere 40 MHz para evitar CCI entre celdas cercanas.</td>
                       </tr>
@@ -4978,8 +4978,8 @@
               id: 'mission-1-press',
               tag: 'Misión 1 · Densidad',
               title: 'Caos de canales en 2.4 GHz (Sala de Prensa)',
-              brief: 'Arregla el caos de canales en 2.4 GHz en esta sala de prensa con 5 APs solapados y migra la seguridad a WPA3.',
-              hint: 'Reduce 40 MHz a 20 MHz, evita canales intermedios (2, 3, 4, 7, 9), combina canales 1/6/11 o migra parte de los APs a 5/6 GHz manteniendo los 5 APs activos.',
+              brief: 'Arregla el caos de canales en 2.4 GHz en esta sala de prensa con 5 APs solapados, migra la seguridad a WPA3 y respeta la potencia máxima de la UE.',
+              hint: 'Reduce 40 MHz a 20 MHz, evita canales intermedios (2, 3, 4, 7, 9), combina canales 1/6/11 o migra parte de los APs a 5/6 GHz manteniendo los 5 APs activos. En 2.4 GHz la PIRE máxima en la UE es 20 dBm: revisa la potencia de cada AP.',
               minAps: 5,
               maxAps: null,
               minConcreteWalls: 0,
@@ -5049,7 +5049,7 @@
               tag: 'Misión 3 · Wi-Fi 6E & PMF',
               title: 'Auditorio Tech: Colisión 5 GHz y Seguridad Legacy',
               brief: 'Corrige los 4 APs del auditorio: elimina colisiones DFS/80 MHz en 5 GHz migrando a canales limpios (6 GHz PSC o 5 GHz sin solapamiento) y blinda todo con WPA3-SAE.',
-              hint: 'Cambia los APs a banda 6 GHz usando canales PSC (5, 21, 37, 53) con 80 MHz o reparte en 5 GHz sin solapar (36, 52, 100, 149) y activa WPA3-SAE.',
+              hint: 'Cambia los APs a banda 6 GHz usando canales PSC (5, 21, 37, 53) con 80 MHz o reparte en 5 GHz sin solapar (36, 52, 100, 116) y activa WPA3-SAE. Los canales 149-165 no están permitidos en la UE.',
               minAps: 4,
               maxAps: null,
               minConcreteWalls: 0,
@@ -5235,6 +5235,15 @@
             const aciCount = alerts.filter((a) => a.type === 'ACI').length;
             const wpa3Count = State.aps.filter((a) => a.security === 'WPA3-SAE').length;
             const allWpa3 = State.aps.length > 0 && wpa3Count === State.aps.length;
+            // Normativa UE (ETSI): misma regla que la auditoría (canales UNII-3 no permitidos y PIRE máxima por banda)
+            const etsiIssues = State.aps
+              .map((ap) => {
+                const max = RFSpec.getEtsiMaxEirpDbm(ap);
+                if (max === null) return `${ap.name}: canal ${ap.channel} no permitido en la UE`;
+                if (ap.txPowerDbm > max) return `${ap.name}: ${ap.txPowerDbm} > ${max} dBm`;
+                return null;
+              })
+              .filter(Boolean);
 
             const mission = this.getActiveMission();
             const checks = [
@@ -5257,6 +5266,11 @@
                 label: `WPA3-SAE activado en todos los APs`,
                 detail: `${wpa3Count}/${State.aps.length} APs con WPA3-SAE`,
                 passed: allWpa3,
+              },
+              {
+                label: `Normativa UE (ETSI): potencia y canales permitidos`,
+                detail: etsiIssues.length ? etsiIssues.join(' · ') : 'Todos los APs dentro de los límites de la UE',
+                passed: etsiIssues.length === 0,
               },
             ];
 
@@ -5298,6 +5312,7 @@
               cciCount,
               aciCount,
               wpa3Count,
+              etsiCount: etsiIssues.length,
               mission,
             };
           },
@@ -5315,7 +5330,7 @@
 
             const ev = this.evaluateCurrentDesign();
             const metricsEl = document.getElementById('mission-hud-metrics');
-            metricsEl.textContent = `Cob: ${ev.coveragePct.toFixed(0)}% | CCI: ${ev.cciCount} | ACI: ${ev.aciCount} | WPA3: ${ev.wpa3Count}/${State.aps.length}`;
+            metricsEl.textContent = `Cob: ${ev.coveragePct.toFixed(0)}% | CCI: ${ev.cciCount} | ACI: ${ev.aciCount} | WPA3: ${ev.wpa3Count}/${State.aps.length} | ETSI: ${ev.etsiCount === 0 ? 'OK' : ev.etsiCount}`;
             metricsEl.className = ev.passedAll
               ? 'text-[11px] text-emerald-300 font-semibold'
               : 'text-[11px] text-amber-300';
@@ -5411,7 +5426,8 @@
               banner.textContent =
                 `[+] RF_PROPAGATION_CHECK ........... OK (${res.coveragePct.toFixed(1)}%)\n` +
                 `[+] SPECTRUM_CCI_ACI_SCAN .......... CLEAN (0 conflictos)\n` +
-                `[+] IEEE_802_11_SECURITY ........... WPA3-SAE VERIFIED`;
+                `[+] IEEE_802_11_SECURITY ........... WPA3-SAE VERIFIED\n` +
+                `[+] ETSI_EU_COMPLIANCE ............. PIRE Y CANALES OK`;
               document.getElementById('flag-value-text').textContent = this.computeFlag(res.mission);
               secretBox.classList.remove('hidden');
             } else {
@@ -5761,7 +5777,7 @@
             {
               id: 'channel',
               title: '3. Configura el Canal y su Ancho',
-              desc: 'Asigna canales no solapados (1, 6 u 11 en 2.4 GHz; 36, 44 o 149 en 5 GHz) y verifica en el Analizador de Espectro inferior que no haya CCI ni ACI.',
+              desc: 'Asigna canales no solapados (1, 6 u 11 en 2.4 GHz; 36, 44 o 52 en 5 GHz) y verifica en el Analizador de Espectro inferior que no haya CCI ni ACI.',
               targetDesc: 'Selector de "Canal" + Enlaces RF en el lienzo',
               domSelector: '#ap-input-channel',
               domLabel: 'Paso 3 · Asigna un canal limpio',

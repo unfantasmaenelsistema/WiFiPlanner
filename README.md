@@ -76,10 +76,10 @@ Capturas reales de la aplicación.
 
 ### 5. Modo CTF y compartición sin servidor (`?state=`)
 - **Misiones predefinidas**:
-  1. **Misión 1 (Densidad · Sala de Prensa)**: corrige 5 APs solapados en `2.4 GHz` (`40 MHz` y canales intermedios) y migra a `WPA3-SAE`.
+  1. **Misión 1 (Densidad · Sala de Prensa)**: corrige 5 APs solapados en `2.4 GHz` (`40 MHz` y canales intermedios) y migra a `WPA3-SAE` sin pasar de la PIRE máxima de la UE (`20 dBm` en 2.4 GHz).
   2. **Misión 2 (Warehouse · Nave Logística)**: logra `> 90%` de cobertura cruzando muros de hormigón (`-12 dB`) con máximo `3 APs` sin interferencias.
   3. **Misión 3 (Wi-Fi 6E & PMF · Auditorio Tech)**: resuelve colisiones de `80/160 MHz` en `5 GHz` migrando a canales limpios / `6 GHz PSC` con `WPA3-SAE`.
-- **Evaluación automática de Flags**: verifica `Cobertura > 90% (>= -75 dBm)`, `0 CCI`, `0 ACI`, `WPA3-SAE` activo y las restricciones de cada misión (en la Misión 2, que los 5 muros de hormigón originales sigan en su sitio). Cada misión tiene **su propia flag** (`FLAG{RF_M1_…}`, `FLAG{RF_M2_…}`, `FLAG{RF_M3_…}`), que se genera al validar y no aparece escrita en el código HTML.
+- **Evaluación automática de Flags**: verifica `Cobertura > 90% (>= -75 dBm)`, `0 CCI`, `0 ACI`, `WPA3-SAE` activo, la **normativa europea (ETSI)** (PIRE máxima por banda y ningún canal `149-165`) y las restricciones de cada misión (en la Misión 2, que los 5 muros de hormigón originales sigan en su sitio). Cada misión tiene **su propia flag** (`FLAG{RF_M1_…}`, `FLAG{RF_M2_…}`, `FLAG{RF_M3_…}`), que se genera al validar y no aparece escrita en el código HTML.
 - **Codificación de estado en URL (`?state=...`)**: serializa el escenario completo en JSON y lo comprime con `deflate-raw` + Base64 URL-safe para compartir ejercicios entre profesores y alumnos sin backend. Al abrir un enlace, el escenario pasa al autoguardado y `?state` desaparece de la barra, así que recargar no deshace los cambios.
 
 ---
@@ -145,6 +145,7 @@ El workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) insta
 - **Compartir por URL:** generar el enlace ya no cambia la barra de direcciones; tras abrir un enlace, recargar conserva los cambios.
 - **Diseño adaptable a móvil:** plano arriba, paneles debajo y navegación visible.
 - Eliminados los restos de la plantilla de AI Studio (React, Gemini, Express) que la app no usaba.
+- **Flags con normativa europea:** las misiones exigen además cumplir la PIRE máxima de la UE y no usar los canales `149-165` (antes la flag salía aunque la auditoría marcara hallazgos críticos de normativa). La tabla de canales, la guía paso a paso y la pista de la Misión 3 ya no recomiendan el canal 149.
 
 ---
 
